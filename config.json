@@ -1,0 +1,12 @@
+{
+    "task": {
+        "build": {
+            "src": "src/btag-parser.js",
+            "dest": {
+                "path": "./",
+                "file": "btag-parser.js"
+            },
+            "moduleName": "btagParser"
+        }
+    }
+}

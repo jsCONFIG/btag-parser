@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>B-Tag Parser</title>
+    <style>
+        html, * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            font-family: hiragino sans GB, "Helvetica", Microsoft YaHei, sans-serif;
+        }
+        .bp-nav {
+            background-color: #2b2b2b;
+            color: #fbfbfb;
+            padding: 10px;
+        }
+        .bp-nav h1 {
+            display: inline-block;
+            font-size: 18px;
+        }
+        .bp-btn {
+            text-decoration: none;
+            color: #fff;
+            float: right;
+            font-size: 14px;
+            padding: 5px 15px;
+            border-radius: 2px;
+            background-color: #39c;
+        }
+        .bp-content {
+            width: 1000px;
+            margin: 10px auto;
+        }
+        .bp-textarea {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            color: #666;
+            height: 800px;
+        }
+        .bp-content-block {
+            display: inline-block;
+            width: 490px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="bp-nav">
+        <h1>BTag Parser</h1>
+        <a href="javascript:;" class="bp-btn" id="runBtn">Run</a>
+    </div>
+    <div class="bp-content">
+        <div class="bp-content-input bp-content-block">
+            <textarea class="bp-textarea" placeholder="String" id="origin"></textarea>
+        </div>
+        <div class="bp-content-panel bp-content-block">
+            <textarea class="bp-textarea" placeholder="Result" id="panel"></textarea>
+        </div>
+    </div>
+    <script type="text/javascript" src="./btag-parser.js"></script>
+    <script>
+        ~function (parser) {
+            var btn = document.getElementById('runBtn');
+            var origin = document.getElementById('origin');
+            var panel = document.getElementById('panel');
+            var transFn = function () {
+                var oVal = origin.value;
+                var parsedVal = parser(oVal);
+                panel.value = JSON.stringify(parsedVal, null, 4);
+            };
+            btn.addEventListener('click', transFn, false);
+            origin.value = '<i>To be</i> or <i><b>not</b> to be</i>, That is a <b>question</b>';
+            transFn();
+        } (window.btagParser());
+    </script>
+</body>
+</html>
