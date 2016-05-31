@@ -129,7 +129,7 @@ var parserWrapper = function (opt) {
             var mixinStr = execResult[2];
             var leftOffset = tagReg.lastIndex - lastPos - fullStr.length;
             if (leftOffset > 0) {
-                let extraStr = strUnit.substr(lastPos, leftOffset);
+                var extraStr = strUnit.substr(lastPos, leftOffset);
                 group = group.concat(parseBr(extraStr, keepPure, brReg));
             }
             var nextParsedVal = tagParser(mixinStr, keepPure);
